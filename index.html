@@ -13,14 +13,23 @@
     <button type="button" class="btn btn-danger " >Sort By Date</button>
     </header>
     <main class="container">
+
+        <section id="loder" class="d-none">
+            <div  class="d-flex align-items-center justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        </section>
         <section>
             <div id="hub-container" class="row row-cols-1 row-cols-md-3 g-4">
             
 
               </div>
         </section>
-        <section class="d-flex justify-content-evenly mt-3">
-            <button type="button" class="btn btn-danger ">see more</button>
+
+        <section id="show-all"  class="d-flex justify-content-evenly mt-3 d-none">
+            <button id="btn-show-all" type="button" class="btn btn-danger ">see more</button>
 
         
 

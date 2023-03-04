@@ -1,13 +1,31 @@
- const loadAI_Universe_Hub= async ()=>{
+ 
+ 
+ const loadAI_Universe_Hub= async (dataLimit)=>{
     const url=`https://openapi.programming-hero.com/api/ai/tools`
     const res=await fetch(url);
     const data=await res.json();
     // console.log(data.data.tools);
-     displayHub(data.data.tools)
-    
+    // toggleSpinner(true);
+   
+     displayHub(data.data.tools,dataLimit)
+     
+     
 }
-const displayHub =hubs=>{
-    // console.log(hub)
+
+
+const displayHub =(hubs,dataLimit)=>{
+    
+    console.log(hubs)
+        // display 6 hubs only 
+        const showAll = document.getElementById('show-all')
+        if (dataLimit && hubs.length > 6) {
+            hubs = hubs.slice(0, 6);
+            showAll.classList.remove('d-none')
+    
+        }
+        else{
+            showAll.classList.add('d-none')
+        }
     const hubContainer=document.getElementById('hub-container');
     hubs.forEach(hub => {
         console.log(hub)
@@ -26,7 +44,7 @@ const displayHub =hubs=>{
               <p>${hub.published_in}</p>
           </div>
           <div>
-              <button type="button" class="btn btn-outline-danger  ">-></button>
+              <button type="button" class="btn btn-outline-danger bg-danger-subtle border border-0 mt-3 ">-></button>
           </div>
       </div>
 
@@ -34,6 +52,23 @@ const displayHub =hubs=>{
       </div>
         `
         hubContainer.appendChild(hubDiv);
+        
     });
+    // toggleSpinner(false);
 }
-loadAI_Universe_Hub();
+
+
+// const toggleSpinner=isLoding=>{
+//     const loaderSection=document.getElementById('loder')
+//     if(isLoding){
+//         loaderSection.classList.remove('d-none');
+//     }
+//     else{
+//         loaderSection.classList.add('d-none');
+//     }
+// }
+
+document.getElementById('btn-show-all').addEventListener('click',function(){
+    loadAI_Universe_Hub();
+})
+loadAI_Universe_Hub(6);
