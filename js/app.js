@@ -5,7 +5,8 @@
     const res=await fetch(url);
     const data=await res.json();
     // console.log(data.data.tools);
-    // toggleSpinner(true);
+    // loading start 
+    toggleSpinner(true);
    
      displayHub(data.data.tools,dataLimit)
      
@@ -54,19 +55,20 @@ const displayHub =(hubs,dataLimit)=>{
         hubContainer.appendChild(hubDiv);
         
     });
-    // toggleSpinner(false);
+    // loading stop 
+    toggleSpinner(false);
 }
 
-
-// const toggleSpinner=isLoding=>{
-//     const loaderSection=document.getElementById('loder')
-//     if(isLoding){
-//         loaderSection.classList.remove('d-none');
-//     }
-//     else{
-//         loaderSection.classList.add('d-none');
-//     }
-// }
+// loder 
+const toggleSpinner=isLoding=>{
+    const loaderSection=document.getElementById('loder')
+    if(isLoding){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
 
 document.getElementById('btn-show-all').addEventListener('click',function(){
     loadAI_Universe_Hub();
