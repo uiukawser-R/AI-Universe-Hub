@@ -1,44 +1,129 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assignment 6</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
     <h1 class="text-center">AI Universe Hub</h1>
     <header class="d-flex justify-content-evenly mb-5">
-  
-    <button type="button" class="btn btn-danger " >Sort By Date</button>
+
+        <button type="button" class="btn btn-danger ">Sort By Date</button>
     </header>
     <main class="container">
 
         <section id="loder" class="d-none">
-            <div  class="d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center">
                 <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-              </div>
+            </div>
         </section>
         <section>
             <div id="hub-container" class="row row-cols-1 row-cols-md-3 g-4">
-            
 
-              </div>
+
+            </div>
         </section>
 
-        <section id="show-all"  class="d-flex justify-content-evenly mt-3 d-none">
+        <section id="show-all" class="d-flex justify-content-evenly mt-3 d-none">
             <button id="btn-show-all" type="button" class="btn btn-danger ">see more</button>
 
-        
 
+
+        </section>
+        <!-- modal  -->
+        <section>
+
+            <!-- Modal -->
+            <div class="modal fade " id="hubModel" tabindex="-1" aria-labelledby="hubModelLabel" aria-hidden="true">
+
+                <div style="height: 1000px;" class="modal-dialog modal-dialog modal-xl">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex justify-content-evenly mb-5">
+                            <div class="card bg-danger-subtle" style="width: 450px; height: 500px;">
+                                <div class="card-body">
+                                    <h3 id="hub-description" class="card-title"></h3>
+                                    <div class="container d-flex justify-content-evenly flex-forward">
+
+                                        <div class="m-3  ps-1 fw-bold text-primary pt-2 border-bottom  text-start rounded"
+                                            style="height: 100px; width: 132px; background-color: white;">
+                                            <p id="p1" class="mt-2 text-center mb-0"></p>
+                                            <p id="p2" class="text-center"></p>
+                                        </div>
+                                        <div class="m-3  ps-1 fw-bold text-secondary pt-2 border-bottom  text-start rounded"
+                                            style="height: 100px; width: 132px; background-color: white;">
+                                            <p id="p3" class="mt-2 text-center mb-0"></p>
+                                            <p id="p4" class="text-center"></p>
+                                        </div>
+                                        <div class="m-3  ps-1 fw-bold text-success pt-2 border-bottom  text-start rounded"
+                                            style="height: 100px; width: 132px; background-color: white;">
+                                            <p id="p5" class="mt-2 text-center mb-0"></p>
+                                            <p id="p6" class="text-center"></p>
+                                        </div>
+                                    
+                                    </div>
+
+
+                                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                                        <div>
+                                            <h2>Features</h2>
+                                            <div>
+                                                <li>g</li>
+                                                <li>g</li>
+                                                <li>h</li>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h2>Integrations</h2>
+                                            <div>
+                                                <li>r</li>
+                                                <li>r</li>
+                                                <li>r</li>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card" style="width: 450px; height: 500px;">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img src="" class="img-fluid" alt="" srcset="">
+                                        <h5 class="pt-3">${modals.input_output_examples[0].input}</h5>
+                                        <div class="text-center rounded p-1"
+                                            style="position:relative; top: -310px; right: -220px; background-color: red; color: white; height: 32px; width: 140px;">
+                                            ${modals.accuracy?.score?modals.accuracy.score*100 : "no data"}% accuracy
+                                        </div>
+                                        <p>${modals.input_output_examples[0].output}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </section>
 
 
     </main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
-  </body>
+</body>
+
 </html>

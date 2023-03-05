@@ -16,7 +16,7 @@
 
 const displayHub =(hubs,dataLimit)=>{
     
-    console.log(hubs)
+    // console.log(hubs)
         // display 6 hubs only 
         const showAll = document.getElementById('show-all')
         if (dataLimit && hubs.length > 6) {
@@ -29,7 +29,7 @@ const displayHub =(hubs,dataLimit)=>{
         }
     const hubContainer=document.getElementById('hub-container');
     hubs.forEach(hub => {
-        console.log(hub)
+        // console.log(hub)
         const hubDiv=document.createElement('div');
         hubDiv.classList.add('col')
         hubDiv.innerHTML=`
@@ -45,7 +45,7 @@ const displayHub =(hubs,dataLimit)=>{
               <p>${hub.published_in}</p>
           </div>
           <div>
-              <button type="button" class="btn btn-outline-danger bg-danger-subtle border border-0 mt-3 ">-></button>
+              <button onclick="loadHubDetails('${hub.id}')" type="button" class="btn btn-outline-danger bg-danger-subtle border border-0 mt-3" data-bs-toggle="modal" data-bs-target="#hubModel">-></button>
           </div>
       </div>
 
@@ -54,7 +54,10 @@ const displayHub =(hubs,dataLimit)=>{
         `
         hubContainer.appendChild(hubDiv);
         
+        
     });
+
+    
     // loading stop 
     toggleSpinner(false);
 }
@@ -74,3 +77,30 @@ document.getElementById('btn-show-all').addEventListener('click',function(){
     loadAI_Universe_Hub();
 })
 loadAI_Universe_Hub(6);
+
+
+
+const loadHubDetails=async id =>{
+    const url=`https://openapi.programming-hero.com/api/ai/tool/${id}`
+    const res = await fetch(url)
+    const data= await res.json()
+    // console.log(data.data);
+    displayHubDetails(data.data)
+}
+
+const displayHubDetails=Hub=>{
+    console.log(Hub);
+    const HubDescription=document.getElementById('hub-description')
+    HubDescription.innerText=Hub.description
+    document.getElementById('p1').innerText=Hub?.pricing?.[0].price? Hub.pricing[0].price: "hello"
+    document.getElementById('p2').innerText=Hub?.pricing?.[0].plan ? Hub.pricing[0].plan : "hello"
+
+    document.getElementById('p3').innerText=Hub?.pricing?.[1].price? Hub.pricing[1].price: "hello"
+    document.getElementById('p4').innerText=Hub?.pricing?.[1].plan ? Hub.pricing[1].plan : "hello"
+
+    document.getElementById('p5').innerText=Hub?.pricing?.[2].price? Hub.pricing[2].price: "hello"
+    document.getElementById('p6').innerText=Hub?.pricing?.[2].plan ? Hub.pricing[2].plan : "hello"
+    
+
+}
+
