@@ -37,7 +37,14 @@ const displayHub =(hubs,dataLimit)=>{
         <img src="${hub.image}" style="height: 300px;" class="card-img-top p-2" alt="...">
         <div class="card-body">
           <h5 class="card-title">Features</h5>
-          <p class="card-text">${hub.features}</p>
+          <p class="card-text">
+          <ol>
+          <li>${hub.features[0]}</li>
+          <li>${hub.features[1]}</li>
+          <li>${hub.features[2]}</li>
+      </ol>
+          
+          </p>
           <hr>
           <div class="d-flex justify-content-between align" >
           <div>
@@ -100,6 +107,28 @@ const displayHubDetails=Hub=>{
 
     document.getElementById('p5').innerText=Hub?.pricing?.[2].price? Hub.pricing[2].price: "hello"
     document.getElementById('p6').innerText=Hub?.pricing?.[2].plan ? Hub.pricing[2].plan : "hello"
+
+    document.getElementById('l1').innerText=Hub.features[1].feature_name
+    document.getElementById('l2').innerText=Hub.features[2].feature_name
+    document.getElementById('l3').innerText=Hub.features[3].feature_name
+    
+    document.getElementById('l4').innerText=Hub?.integrations[0]?Hub.integrations[0]:"no Data"
+    document.getElementById('l5').innerText=Hub?.integrations[1]?Hub.integrations[1]:"no Data"
+    document.getElementById('l6').innerText=Hub?.integrations[2]?Hub.integrations[2]:"no Data"
+
+
+    document.getElementById('card-body').innerHTML= `
+    <div class="text-center">
+                                        <img src="${Hub.image_link[0]}" class="img-fluid" alt="" srcset="">
+                                        <h5 class="pt-3">${Hub.input_output_examples[0].input}</h5>
+                                        <div class="text-center rounded p-1"
+                                            style="position:relative; top: -310px; right: -220px; background-color: red; color: white; height: 32px; width: 140px;">
+                                            ${Hub.accuracy?.score?Hub.accuracy.score*100 : "no data"}% accuracy
+                                        </div>
+                                        <p>${Hub.input_output_examples[0].output}</p>
+                                    </div>
+    `
+  
     
 
 }
