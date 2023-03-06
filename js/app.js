@@ -19,6 +19,7 @@ const displayHub =(hubs,dataLimit)=>{
     // console.log(hubs)
         // display 6 hubs only 
         const showAll = document.getElementById('show-all')
+        
         if (dataLimit && hubs.length > 6) {
             hubs = hubs.slice(0, 6);
             showAll.classList.remove('d-none')
@@ -28,6 +29,7 @@ const displayHub =(hubs,dataLimit)=>{
             showAll.classList.add('d-none')
         }
     const hubContainer=document.getElementById('hub-container');
+    hubContainer.innerHTML = '';
     hubs.forEach(hub => {
         // console.log(hub)
         const hubDiv=document.createElement('div');
@@ -54,6 +56,7 @@ const displayHub =(hubs,dataLimit)=>{
           </div>
           <div>
               <button onclick="loadHubDetails('${hub.id}')" type="button" class="btn btn-outline-danger bg-danger-subtle border border-0 mt-3" data-bs-toggle="modal" data-bs-target="#hubModel">-></button>
+              
           </div>
       </div>
 
