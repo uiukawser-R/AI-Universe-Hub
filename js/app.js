@@ -50,6 +50,7 @@ const displayHub =(hubs,dataLimit)=>{
           <div>
               <h3>${hub.name}</h3>
               <p>${hub.published_in}</p>
+              
           </div>
           <div>
               <button onclick="loadHubDetails('${hub.id}')" type="button" class="btn btn-outline-danger bg-danger-subtle border border-0 mt-3" data-bs-toggle="modal" data-bs-target="#hubModel">-></button>
